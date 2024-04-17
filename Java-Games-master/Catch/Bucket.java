@@ -12,6 +12,7 @@ public class Bucket
 	public static final Color BLACK_COLOR = Color.BLACK;
 	public static final Color BLUE_COLOR = Color.blue;
 	public static final Color ORAN_COLOR = Color.orange;
+	public static final Color PURPLE_COLOR = Color.magenta;
 
 	public Bucket(int x, int y, Color color)
 	{
