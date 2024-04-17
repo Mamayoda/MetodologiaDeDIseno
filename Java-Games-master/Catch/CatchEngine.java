@@ -22,7 +22,7 @@ public class CatchEngine
 	public CatchEngine()
 	{
 		balls = new Vector();
-		bucket = new Bucket(WIDTH/2, HEIGHT-Bucket.HEIGHT/2);
+		bucket = new Bucket(WIDTH/2, HEIGHT-Bucket.HEIGHT/2,Bucket.BLACK_COLOR);
 		highScoreManager = new HighScoreManager();
 	}
 
@@ -105,6 +105,17 @@ public class CatchEngine
 			testBallCatch();
 			highScoreManager.checkScore(points);
 		} 
+
+        if (points >= 2) {
+            // Mantén la posición actual del balde y cambia su color
+            Point currentPosition = bucket.getLocation();
+            bucket = new Bucket(currentPosition.x,currentPosition.y, Bucket.BLUE_COLOR);
+        }
+		if(points >= 6){
+
+			Point currentPosition = bucket.getLocation();
+            bucket = new Bucket(currentPosition.x,currentPosition.y, Bucket.ORAN_COLOR);
+		}
 	}
 
 	public void draw(Graphics g)
@@ -121,6 +132,7 @@ public class CatchEngine
 			balls.get(i).draw(g);
 
 		bucket.draw(g);
+		g.setColor(Color.BLACK);
         g.drawString("HighScore: " + + highScoreManager.getHighScore(), 10, 45);
 	}
 }
